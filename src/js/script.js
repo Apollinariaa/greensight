@@ -13,17 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		let content = await response.json();
 		return content.description;
 	}
-	
-	async function loadPage() {
-			let response = await getResponse();
-			showVacancies(response);
-	}
 
 	async function showVacancies(content) {
+		/* находим section куда будут добавлять вакансий */
 		const vacanciesSection = document.querySelector('.vacancies-section');
+
+		/* дефолтный логотип, если его нет */
 		const img = 'img/no_logo.png';
+		
+		let arrForm = [];
+
 		content.forEach(async (vacancy) => {
+			/* Создала массив с Form, чтобы потом добавить в меню */
+			arrForm.push(vacancy.schedule.name);
+
 			let description = await getDescription(vacancy.id);
+
 			const vacanciesBlock = document.createElement('div');
 			vacanciesBlock.className = "vacancies__block";
 			vacanciesBlock.innerHTML += `
@@ -36,13 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			</div>
 			<div class="vacancies__block__right-wrapper right-wrapper">
 				<h2  class="right-wrapper__title title">${vacancy.name}</h2>
-				${description}
-			</div>
-			`;
+				<div class="parent-for-text">
+					<div class="right-wrapper__text">${description}</div>
+				</div>
+			</div>`;
+      addBtn(vacanciesBlock.querySelector('.right-wrapper__text'));
 			vacanciesSection.append(vacanciesBlock);
 		});
+		createMenu(arrForm);
+		showMenu();
 	}
-	/* Получание 5 вакансий */
+
+	/* Получение вакансий по API */
 	async function getResponse(i = 0) {
 		let response = await fetch('https://api.hh.ru/vacancies/', {
 							method: 'GET',
@@ -51,10 +61,76 @@ document.addEventListener('DOMContentLoaded', () => {
 							}
 						});
 		let content = await response.json();
-		content = content.items.splice(i,i+5);
+		content = content.items.splice(i,i+10);
 
 		return content;
 	} 
+	
+	async function loadPage() {
+			let response = await getResponse();
+			await showVacancies(response); 
+	}
+
+
+	function showMenu(){
+		const divVacancy = document.querySelector('#vacancyList');
+		const navMenubtn = document.querySelector('.nav-menu__img');
+		navMenubtn.addEventListener('click', () =>{
+			divVacancy.classList.toggle('click');
+		});
+	}
+
+	/* Добавление в выпадающее меню уникальных вакансий */
+	function createMenu(arrVacancy) {
+		const newArrVacancy = unique(arrVacancy);
+		const divVacancy = document.querySelector('#vacancyList');
+		for (let i = 0; i < newArrVacancy.length; i++){
+			const elemNavMenu = document.createElement('p');
+			elemNavMenu.innerHTML += `${newArrVacancy[i]}`;
+			divVacancy.append(elemNavMenu);
+		}
+	}
+
+	/* Проверка на уникальность элементов для выпадающего меню*/
+	function unique(arr) {
+		let result = [];
+		for (let str of arr) {
+			if (!result.includes(str)) {
+				result.push(str);
+			}
+		}
+		return result;
+	} 
+
+  /* Проверка на добавление кнопки more details */
+	async function addBtn(block) {
+    if(block.innerHTML.length > 220){
+      addMoreBtn(block);
+    }
+	}
+
+	/* Добавление кнопок. Механизм скрытия/раскрытия. */
+	function addMoreBtn(textField) {
+		const openText = "more details";
+		const closeText = "close";
+		
+		const moreBtn = document.createElement("div");
+		moreBtn.classList.add("moreBtn");
+		const moreBtnText = document.createTextNode(openText);
+		moreBtn.appendChild(moreBtnText);
+ 		textField.parentElement.appendChild(moreBtn, textField);
+	
+		moreBtn.addEventListener('click', function(event){
+			event.preventDefault();
+			if (moreBtn.innerHTML == openText){
+				textField.classList.add("openFullText");
+				moreBtn.innerHTML = closeText;
+			} else {
+				textField.classList.remove("openFullText");
+				moreBtn.innerHTML = openText;
+			}
+		}); 
+	}
 
 	loadPage();
 });

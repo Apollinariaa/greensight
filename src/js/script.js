@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		let content = await response.json();
 		return content.description;
 	}
-
+	
 	async function showVacancies(content) {
 		/* находим section куда будут добавлять вакансий */
 		const vacanciesSection = document.querySelector('.vacancies-section');
@@ -54,29 +54,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* Получение вакансий по API */
 	async function getResponse(i = 0) {
-		let response = await fetch('https://api.hh.ru/vacancies/', {
+		let response = await fetch(`https://api.hh.ru/vacancies/?per_page=5&page=${i}`, {
 							method: 'GET',
 							headers: {
 									"user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Mobile Safari/537.36"
 							}
 						});
 		let content = await response.json();
-		content = content.items.splice(i,i+10);
+		content = content.items;
 
 		return content;
 	} 
-	
+
+	/* вызов функций */
 	async function loadPage() {
 			let response = await getResponse();
 			await showVacancies(response); 
+			addNextVacancies();
 	}
 
-
+	/* показать/скрыть выпадающее меню */
 	function showMenu(){
 		const divVacancy = document.querySelector('#vacancyList');
 		const navMenubtn = document.querySelector('.nav-menu__img');
 		navMenubtn.addEventListener('click', () =>{
 			divVacancy.classList.toggle('click');
+			navMenubtn.classList.toggle('rotate');
 		});
 	}
 
@@ -131,6 +134,30 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}); 
 	}
+
+	/* добавление дополнительно +5 вакансий при нажатии кнопки */
+ 	async function addNextVacancies() {
+		const parent = document.querySelector('.more-vacancies');
+		const btnShowMore = document.createElement('button');
+		btnShowMore.className = 'btn';
+		const text = document.createTextNode("Show more");
+		btnShowMore.appendChild(text);
+		parent.append(btnShowMore);
+		let count = 0;
+		
+		btnShowMore.addEventListener('click', async () =>{
+			count += 1 ;
+			console.log(count);
+			let response = await getResponse(count);
+			await showVacancies(response); 
+			if (count === 3) {
+				btnShowMore.style = 'display: none';
+			} 
+		});
+
+
+	} 
+
 
 	loadPage();
 });

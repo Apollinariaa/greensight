@@ -5,57 +5,52 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/normalize.css">
 	<title>Список вакансий</title>
 </head>
-
 <body>
-	<section class="vacancies-section vacancies">
-		<h1 class="vacancies__title title">List of vacancies</h1>
-		
-		<div class="form">
-			<div class="form__drop-down-menu">
-				<div class="nav-menu">
-					<label for="">Form <br><p class="nav-menu__text">Not selected</p></label> 
-					<img class="nav-menu__img" src="img/menu-btn.png" alt="#">
-				</div>
-				<hr class="text__hr nav-menu__hr">
-				<div id="vacancyList" class="nav-menu__list click">
-				</div>
+	<main class="vacancies-section vacancies">
+		<h1 class="vacancies-section-title title">List of vacancies</h1>
+		<div class="vacancies-section__drop-down-menu">
+			<div class="drop-down-menu">
+				<label for="">Form <br><p class="drop-down-menu__text">Not selected</p></label> 
+				<img class="drop-down-menu__img" src="img/png/menu-btn.png" alt="#">
+			</div>
+			<hr class="drop-down-menu__hr">
+			<div id="vacancyList" class="drop-down-menu__list click">
 			</div>
 		</div>
+	</main>
 
-	</section>
-
-	<section class="more-vacancies">
+	<section class="btn-more-vacancies">
 	</section>
 
 	<section class="request-section">
 		<h3 class="request-section__title title">Leave a request</h3>
 		<div class="request-section__request request">
 			<div class="request__left-wrapper">
-				<p class="request__left-wrapper__text text"><label >Your name: <br> <input class="text__input" inputmode="text" placeholder="Please introduce yourself" required></label></p>
-				<hr class="text__hr">
-				<p class="request__left-wrapper__text text"><label>Email: <br> <input class="text__input"  inputmode="text" placeholder="ivanov@mail.ru" required></label></p>
-				<hr class="text__hr">
-				<p class="request__left-wrapper__text text"><label>Phone number: <br> <input class="text__input" inputmode="tel" id="phone" type="text" placeholder="+7 (999) 123-45-78" required></label></p>
-				<hr class="text__hr">
-				<p class="request__left-wrapper__text text"><label>Comment: <br> <input class="text__input"  inputmode="text" placeholder="Message text"></label></p>
-				<hr class="text__hr">
-				<button class="btn request__left-wrapper__btn">Send</button>
-				<p class="request__left-wrapper__text">By clicking "Send" you confirm your consent to the <br><a class="text__a" href="#">processing of personal data</a></p>
+				<p class="request__left-wrapper-text text"><label >Your name: <br> <input class="text__input" inputmode="text" placeholder="Please introduce yourself" required></label></p>
+				<hr class="text_hr">
+				<p class="request__left-wrapper-text text"><label>Email: <br> <input class="text__input"  inputmode="text" placeholder="ivanov@mail.ru" required></label></p>
+				<hr class="text_hr">
+				<p class="request__left-wrapper-text text"><label>Phone number: <br> <input class="text__input" inputmode="tel" id="phone" type="text" placeholder="+7 (999) 123-45-78" required></label></p>
+				<hr class="text_hr">
+				<p class="request__left-wrapper-text text"><label>Comment: <br> <input class="text__input"  inputmode="text" placeholder="Message text"></label></p>
+				<hr class="text_hr">
+				<button class="btn request__left-wrapper-btn">Send</button>
+				<p class="request__left-wrapper-text">By clicking "Send" you confirm your consent to the <br><a class="text__a" href="#">processing of personal data</a></p>
 			</div>
 	
 			<div class="request__right-wrapper">
-				<p class="request__right-wrapper__text">We will advise you and help you start a new project</p>
-				<p class="request__right-wrapper__contacts">+7 499 391-66-69</p>
-				<p style="margin-bottom: 70px;" class="request__right-wrapper__contacts">mail@greensight.ru</p>
-				<p class="request__right-wrapper__adress">Moscow, Zelenograd, Central Ave., bldg. 305, 3rd floor</p>
-				<p class="request__right-wrapper__adress">How to get there?</p>
+				<p class="request__right-wrapper-text">We will advise you and help you start a new project</p>
+				<p class="request__right-wrapper-contacts">+7 499 391-66-69</p>
+				<p style="margin-bottom: 70px;" class="request__right-wrapper-contacts">mail@greensight.ru</p>
+				<p class="request__right-wrapper-adress">Moscow, Zelenograd, Central Ave., bldg. 305, 3rd floor</p>
+				<p class="request__right-wrapper-adress">How to get there?</p>
 			</div>
 		</div>
-		
-
 	</section>
-<script type="module" src="js/script.js"></script>
+
+<script type="module" src="js/internal.js"></script>
 </body>
 </html>

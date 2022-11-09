@@ -7,7 +7,7 @@ $gutter-step: 8px;
 	src: url("../fonts/static/Rubik-Regular.ttf");
 	font-weight: 400;
 	font-style: normal;
-	font-size: $gutter-step*2;
+	font-size: 16px;
 }
 
 @font-face {
@@ -15,7 +15,7 @@ $gutter-step: 8px;
 	src: url("../fonts/Roboto-Regular.ttf");
 	font-weight: regular;
 	font-style: normal;
-	font-size: $gutter-step*2;
+	font-size: 16px;
 } 
 
 * {
@@ -46,7 +46,7 @@ section {
 
 .title {
 	font-weight: 400;
-	font-size: $gutter-step*8;
+	font-size: 64px;
 }
 
 .btn {
@@ -223,7 +223,7 @@ a {
 	strong,
 	em {
 		font-style: normal;
-		font-size: $gutter-step*2;
+		font-size: 16px;
 		font-weight: 400;
 		line-height: 22px;
 		margin: 0;
@@ -248,7 +248,7 @@ a {
 /* main vacancies-section right-wrapper btn more/close */
 .moreBtn {
 	color: $color-grey;
-	font-size: $gutter-step*2;
+	font-size: 16px;
 	text-align: center;
 	margin-top: $gutter-step;
 }

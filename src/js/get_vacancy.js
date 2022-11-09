@@ -35,20 +35,20 @@ content.forEach(async (vacancy) => {
 	const vacanciesBlock = document.createElement("div");
 	vacanciesBlock.className = "vacancies-block";
 	vacanciesBlock.innerHTML += `
-	<div class="vacancies-block__left-wrapper left-wrapper">
-		<img class="left-wrapper__label" src="${(vacancy.employer.logo_urls === null) ? img : (vacancy.employer.logo_urls.original) }" >
-		<p class="left-wrapper__text text"><span class="text__span">Form: </span>${vacancy.schedule.name}</p>
-		<p class="left-wrapper__text text"><span class="text__span">Company: </span>${vacancy.employer.name}</p>
-		<p class="left-wrapper__text text"><span class="text__span">Web: </span><a href="${(vacancy.alternate_url) ? (vacancy.alternate_url) : "#"}">${(vacancy.alternate_url) ? (vacancy.alternate_url) : "-"}</a></p>
-		<p class="left-wrapper__text text"><span class="text__span">Address: </span>${vacancy.area.name}</p>
+	<div class="vacancies-block__left-wrapper vacancies-card">
+		<img class="vacancies-card__label" src="${(vacancy.employer.logo_urls === null) ? img : (vacancy.employer.logo_urls.original) }" >
+		<div class="vacancies-card__text"><span class="vacancies-card__span">Form: </span>${vacancy.schedule.name}</div>
+		<div class="vacancies-card__text"><span class="vacancies-card__span">Company: </span>${vacancy.employer.name}</div>
+		<div class="vacancies-card__text"><span class="vacancies-card__span">Web: </span><a href="${(vacancy.alternate_url) ? (vacancy.alternate_url) : "#"}">${(vacancy.alternate_url) ? (vacancy.alternate_url) : "-"}</a></div>
+		<div class="vacancies-card__text"><span class="vacancies-card__span">Address: </span>${vacancy.area.name}</div>
 	</div>
-	<div class="vacancies-block__right-wrapper right-wrapper">
-		<h2  class="right-wrapper__title title">${vacancy.name}</h2>
-		<div class="parent-for-text">
-			<div class="right-wrapper__text">${description}</div>
+	<div class="vacancies-block__right-wrapper vacancies-info">
+		<h2  class="vacancies-info__title title">${vacancy.name}</h2>
+		<div class="vacancies-info__parent-text">
+			<div class="vacancies-info__text">${description}</div>
 		</div>
 	</div>`;
-	addBtn(vacanciesBlock.querySelector(".right-wrapper__text"));
+	addBtn(vacanciesBlock.querySelector(".vacancies-info__text"));
 	vacanciesSection.append(vacanciesBlock);
 	});
 		createMenu(arrForm);
@@ -65,7 +65,6 @@ async function getResponse(i = 0) {
 					});
 	let content = await response.json();
 	content = content.items;
-
 	return content;
 } 
 

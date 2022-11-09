@@ -1,5 +1,6 @@
 $color-black: #000000;
 $color-grey: #545454;
+$gutter-step: 7px;
  
 @font-face {
 	font-family: 'Rubik';
@@ -25,18 +26,18 @@ $color-grey: #545454;
 /* default styles */
 main,
 section {
-	padding: 0 150px;
+	padding: 0 $gutter-step*20;
 	@media (max-width: 640px) {
-		padding: 0 10px;
+		padding: 0 $gutter-step;
 	}
 	@media (max-width: 768px) {
-		padding: 0 10px;
+		padding: 0 $gutter-step;
 	}
 	@media (max-width: 1024px) {
-		padding: 0 20px;
+		padding: 0 $gutter-step*3;
 	}
 	@media (max-width: 1279px) {
-		padding: 0 20px;
+		padding: 0 $gutter-step*3;
 	}
 	@media (min-width: 1280px) {
 		padding: 0 calc(50vw - 590px);
@@ -51,10 +52,10 @@ section {
 .btn {
 	border: 0;
 	border-radius: 0;
-	min-width: 230px;
-	height: 48px;
+	min-width: $gutter-step*28;
+	height: $gutter-step*6;
 	background: $color-black;
-	padding: 0 20px;
+	padding: 0 $gutter-step*3;
 	color: #fff;
 	line-height: 26px;
 }
@@ -67,16 +68,16 @@ a {
 
 /* main vacancies-section */
 .vacancies-section {
-	margin-bottom: 30px;
+	margin-bottom: $gutter-step*4;
 	&__title {
-		padding-top: 70px;
-		margin-bottom: 70px;
+		padding-top: $gutter-step*10;
+		margin-bottom: $gutter-step*10;
 	}
 	&__drop-down-menu {
 		position: relative;
 		width: 40%;
-		min-height: 55px;
-		margin-bottom: 30px;
+		min-height: $gutter-step*7;
+		margin-bottom: $gutter-step*4;
 	}
 }
 /* /main vacancies-section */
@@ -89,7 +90,7 @@ a {
 		align-items: center;
 		label {
 			display: block;
-			margin-bottom: 10px;
+			margin-bottom: $gutter-step;
 		}
 	}
 	&__img {
@@ -99,18 +100,18 @@ a {
 		display: inline;
 		margin: 0;
 		color: $color-grey;
-		margin: 10px 0;
+		margin: $gutter-step 0;
 	}
 	&__hr {
 		margin: 0;
-		margin-bottom: 30px;
+		margin-bottom: $gutter-step*4;
 		border-top: 1.5px solid black;
 		width: 100%;
 	}
 	&__list {
 		position: absolute;
 		width: 100%;
-		margin-top: -30px;
+		margin-top: -$gutter-step*4;
 		z-index: 10;
 		background-color: white;
 	}
@@ -133,17 +134,17 @@ a {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	min-height: 300px;
+	min-height: $gutter-step*38;
 	border: 1px solid $color-black;
-	margin-bottom: 24px;
+	margin-bottom: $gutter-step*4;
 	&__left-wrapper {
 		width: 40%;
-		padding: 20px;
+		padding: $gutter-step*3;
 	}
 	&__right-wrapper {
 		font-family: 'Roboto';
 		width: 60%;
-		padding: 20px;
+		padding: $gutter-step*3;
 	}	
 	@media (max-width: 640px) {
 		display: block;
@@ -151,7 +152,7 @@ a {
 			width: 100%;
 		}
 		&__right-wrapper {
-			padding: 20px;
+			padding: $gutter-step*3;
 			width: 100%;
 		}
 	}
@@ -161,7 +162,7 @@ a {
 			width: 100%;
 		}
 		&__right-wrapper {
-			padding: 20px;
+			padding: $gutter-step*3;
 			width: 100%;
 		}
 	}
@@ -171,7 +172,7 @@ a {
 			width: 100%;
 		}
 		&__right-wrapper {
-			padding: 20px;
+			padding: $gutter-step*3;
 			width: 100%;
 		}
 	}
@@ -179,20 +180,23 @@ a {
 /* /main vacancies */
 
 /* main vacancies-section left-wrapper */
-.left-wrapper {
-	&__label {
-		margin-bottom: 26px;
-		width: 220px ;
-		height: 120px;
-		object-fit: contain;
-	}
-	&__text {
+.vacancies-card {
+	&__text{
 		margin: 0;
-		margin-bottom: 20px;
+		margin-bottom: $gutter-step*3;
 		line-height: 140%;
 		&:last-child {
 			margin-bottom: 0;
 		}
+	}
+	&__label {
+		margin-bottom: $gutter-step*3;
+		width: $gutter-step*27 ;
+		height: $gutter-step*15;
+		object-fit: contain;
+	}
+	&__span {
+		color: $color-grey;
 	}
 	@media (max-width: 640px) {
 		&__label {
@@ -203,10 +207,10 @@ a {
 /* /main vacancies-section left-wrapper */
 
 /* main vacancies-section right-wrapper */
-.right-wrapper {
+.vacancies-info {
 	&__title {
 		margin: 0;
-		margin-bottom: 10px;
+		margin-bottom: $gutter-step;
 		font-size: 32px;
 	}
 	&__text {
@@ -223,19 +227,19 @@ a {
 		font-weight: 400;
 		line-height: 22px;
 		margin: 0;
-		margin-bottom: 10px;
+		margin-bottom: $gutter-step;
 	}
 	ul {
 		margin: 0;
-		padding-left: 20px;
+		padding-left: $gutter-step*3;
 		line-height: 20px;
-		margin-bottom: 10px;
+		margin-bottom: $gutter-step*3;
 		li {
-			margin-bottom: 10px;
+			margin-bottom: $gutter-step;
 		}	
 		strong {
 			margin: 0;
-			margin-bottom: 10px;
+			margin-bottom: $gutter-step;
 		}
 	}	
 }
@@ -246,7 +250,7 @@ a {
 	color: $color-grey;
 	font-size: 16px;
 	text-align: center;
-	margin-top: 10px;
+	margin-top: $gutter-step;
 }
 
 .openFullText {
@@ -256,7 +260,7 @@ a {
 
 /* section btn-more-vacancies */
 .btn-more-vacancies {
-	margin-bottom: 70px;
+	margin-bottom: $gutter-step*8;
 	button {
 		margin: 0 auto;
 		display: block;
@@ -266,28 +270,13 @@ a {
 
 /* main and section text style  */
 .text {
-	&__span {
-		color: $color-grey;
-	}
 	&_hr {
 		margin: 0;
-		margin-bottom: 30px;
+		margin-bottom: $gutter-step*4;
 		width: 80%;
 		border-top: 1.5px solid black;
 	}
-	&__input {
-		width: 70%;
-		border: none;
-		font-size: 16px;
-		margin-top: 5px;
-		line-height: 160%;
-		outline: none;
-	}
-	&__a {
-		border-bottom: 2px dashed black;
-		text-decoration: none;
-		color: black;
-	}
+
 	@media (max-width: 640px) {
 		&__hr {
 			width: 100%;
@@ -301,13 +290,13 @@ a {
 
 /* section request-section */ 
 .request-section {
-	margin-bottom: 70px;
+	margin-bottom: $gutter-step*8;
 	&__title {
-		margin-bottom: 70px;
+		margin-bottom: $gutter-step*8;
 	}
 	@media (max-width: 768px) {
 		&__title {
-			padding-left: 20px;
+			padding-left: $gutter-step*3;
 		}
 	}
 } 
@@ -318,10 +307,10 @@ a {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	min-height: 340px;
+	min-height: $gutter-step*42.5;
  	&__left-wrapper {
 		width: 50%;
-		margin-right: 10%;
+		margin-right: $gutter-step*10;
 	} 
 	&__right-wrapper {
 		font-family: 'Roboto';
@@ -341,7 +330,7 @@ a {
 		display: block;
 		&__left-wrapper {
 			width: 100%;
-			margin-bottom: 70px;
+			margin-bottom: $gutter-step*8;
 		}
 		&__right-wrapper {
 			width: 100%;
@@ -351,7 +340,7 @@ a {
 
 .request-form {
 	&__field {
-		margin-right: 10%;
+		margin-right: $gutter-step*10;
 	}
 }
 
@@ -361,7 +350,7 @@ a {
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 160%;
-		margin-bottom: 70px;
+		margin-bottom: $gutter-step*10;
 
 	}
 	&__contacts {
@@ -369,7 +358,7 @@ a {
 		font-weight: 400;
 		font-size: 32px;
 		line-height: 24px;
-		margin-bottom: 10px;
+		margin-bottom: $gutter-step;
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -379,7 +368,7 @@ a {
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 24px;
-		margin-bottom: 10px;
+		margin-bottom: $gutter-step;
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -387,19 +376,30 @@ a {
 }
 
 .request-field{
-	&__text {
-		margin: 0;
-	}
+	margin: 0;
 	&__btn {
 		border: 0;
 		border-radius: 0;
-		min-width: 230px;
-		height: 48px;
+		min-width: $gutter-step*28;
+		height: $gutter-step*6;
 		background: $color-black;
-		padding: 0 20px;
+		padding: 0 $gutter-step*3;
 		color: #fff;
 		line-height: 26px;
-		margin-bottom: 30px;
+		margin-bottom: $gutter-step*4;
+	}
+	&__input {
+		width: 70%;
+		border: none;
+		font-size: 16px;
+		margin-top: $gutter-step;
+		line-height: 160%;
+		outline: none;
+	}
+	&__a {
+		border-bottom: 2px dashed black;
+		text-decoration: none;
+		color: black;
 	}
 }
 /* section request */

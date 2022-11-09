@@ -33,16 +33,16 @@ content.forEach(async (vacancy) => {
 	let description = await getDescription(vacancy.id);
 
 	const vacanciesBlock = document.createElement("div");
-	vacanciesBlock.className = "vacancies__block";
+	vacanciesBlock.className = "vacancies-block";
 	vacanciesBlock.innerHTML += `
-	<div class="vacancies__block__left-wrapper left-wrapper">
+	<div class="vacancies-block__left-wrapper left-wrapper">
 		<img class="left-wrapper__label" src="${(vacancy.employer.logo_urls === null) ? img : (vacancy.employer.logo_urls.original) }" >
 		<p class="left-wrapper__text text"><span class="text__span">Form: </span>${vacancy.schedule.name}</p>
 		<p class="left-wrapper__text text"><span class="text__span">Company: </span>${vacancy.employer.name}</p>
 		<p class="left-wrapper__text text"><span class="text__span">Web: </span><a href="${(vacancy.alternate_url) ? (vacancy.alternate_url) : "#"}">${(vacancy.alternate_url) ? (vacancy.alternate_url) : "-"}</a></p>
 		<p class="left-wrapper__text text"><span class="text__span">Address: </span>${vacancy.area.name}</p>
 	</div>
-	<div class="vacancies__block__right-wrapper right-wrapper">
+	<div class="vacancies-block__right-wrapper right-wrapper">
 		<h2  class="right-wrapper__title title">${vacancy.name}</h2>
 		<div class="parent-for-text">
 			<div class="right-wrapper__text">${description}</div>

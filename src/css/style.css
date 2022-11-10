@@ -358,7 +358,7 @@ a {
   margin: 0;
   font-weight: 400;
   font-size: 18px;
-  line-height: 160%;
+  line-height: 24px;
   margin-bottom: 80px;
 }
 .request-info__contacts {
@@ -401,7 +401,7 @@ a {
   border: none;
   font-size: 16px;
   margin-top: 8px;
-  line-height: 160%;
+  line-height: 24px;
   outline: none;
 }
 .request-field__a {
